@@ -1,10 +1,7 @@
 const path = require("path");
-
 const express = require("express");
-
 const configs = require("./configs");
 const middleware = require("./middleware");
-
 const adminRouter = require("./routes/admin");
 const advRouter = require("./routes/adv");
 const loginRouter = require("./routes/login");
