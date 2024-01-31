@@ -1,7 +1,7 @@
 module.exports = {
   // 数据库配置
   db: {
-    address: "12.0.0.1",
+    address: "127.0.0.1",
     port: "27017",
     dbname: "atguigu",
   },
