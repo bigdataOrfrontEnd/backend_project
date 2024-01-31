@@ -35,9 +35,10 @@ app.use(loginRouter);
 app.use(realtimehot);
 app.use(zhihuhot);
 //加载静态资源
-app.use("/public", express.static(path.join(__dirname, "./public/")));
+app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("*", (req, res) => {
-  res.status(404).sendJson("资源不存在", -1);
+  // res.status(404).sendJson("资源不存在", -1);
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.listen(configs.port, configs.bindIp, () => {
