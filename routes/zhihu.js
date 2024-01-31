@@ -1,5 +1,6 @@
 const cheerio = require("cheerio");
 const express = require("express");
+const hot = require("../models/hotListFeed");
 const router = express.Router();
 // 引入插件
 const charset = require("superagent-charset");
@@ -9,10 +10,10 @@ charset(superagent);
 // 登陆接口
 router.get("/zhihu", async (req, res) => {
   const data = await fetchHTML();
-  console.log(typeof JSON.parse(data).data);
+  await hot.insertOne(JSON.parse(data).data[0]);
   res.json({
     ok: 1,
-    data: JSON.parse(data).data,
+    data: JSON.parse(data).data[0],
   });
 });
 //向需要爬虫的地方发送axios请求
