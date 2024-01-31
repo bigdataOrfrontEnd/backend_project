@@ -17,7 +17,6 @@ module.exports = class Db {
   }
   // 插入一条数据
   async insertOne(insertObj) {
-    console.log(insertObj);
     await connect();
     return this.model(insertObj).save();
   }

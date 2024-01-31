@@ -10,10 +10,12 @@ charset(superagent);
 // 登陆接口
 router.get("/zhihu", async (req, res) => {
   const data = await fetchHTML();
-  await hot.insertOne(JSON.parse(data).data[0]);
+  await hot.insertOne({
+    attached_info: JSON.parse(data).data[0].attached_info,
+  });
   res.json({
     ok: 1,
-    data: JSON.parse(data).data[0],
+    data: JSON.parse(data).data[0].attached_info,
   });
 });
 //向需要爬虫的地方发送axios请求
