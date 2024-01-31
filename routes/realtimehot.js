@@ -14,7 +14,7 @@ charset(superagent);
 router.get("/realtimehot", async (req, res) => {
   console.log("开始爬虫");
   //目标地址
-  const url = "https://s.weibo.com/top/summary?cate=realtimehot";
+  const url = "https://s.weibo.com/top/summary";
   //请求头
   const header = {
     "User-Agent":
@@ -37,7 +37,7 @@ async function fetchHTML(r, header) {
   return new Promise((resolve, reject) => {
     superagent
       .get(
-        "https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?limit=50&desktop=true"
+        r
       )
       .charset()
       .end(async (err, sres) => {

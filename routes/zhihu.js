@@ -10,9 +10,9 @@ charset(superagent);
 // 登陆接口
 router.get("/zhihu", async (req, res) => {
   const data = await fetchHTML();
-  await hot.insertOne({
-    attached_info: JSON.parse(data).data[0].attached_info,
-  });
+  // await hot.insertOne({
+  //   attached_info: JSON.parse(data).data[0].attached_info,
+  // });
   res.json({
     ok: 1,
     data: JSON.parse(data).data[0].attached_info,
