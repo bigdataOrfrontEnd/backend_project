@@ -1,3 +1,4 @@
+//数据库连接配置并重写增删改查
 const { db } = require("../configs");
 const mongoose = require("mongoose");
 async function connect() {
