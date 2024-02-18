@@ -8,6 +8,7 @@ const advRouter = require("./routes/adv");
 const loginRouter = require("./routes/login");
 const realtimehot = require("./routes/realtimehot");
 const zhihuhot = require("./routes/zhihu");
+const gpt = require("./routes/gpt");
 
 const app = express();
 
@@ -34,17 +35,17 @@ app.use(express.json()); // 将请求体中的数据放置到req.body中
 //可以获取用户的详细信息并添加到请求对象中，方便后续路由处理程序使用。
 app.use(async function (req, res, next) {
   req.cookies = new Cookies(req, res);
-  console.log(req.cookies);
+  // console.log(req.cookies);
 
   // 解析登录用户的cookies信息
   if (req.cookies.get("userInfo")) {
     try {
-      console.log(req.cookies);
+      // console.log("req", req.cookies);
       // req.userInfo = JSON.parse(req.cookies.get("userInfo"));
       // const userInfo = await User.findById(req.userInfo._id);
       // req.userInfo.isAdmin = Boolean(userInfo.isAdmin);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }
   next();
@@ -55,6 +56,7 @@ app.use(advRouter);
 app.use(loginRouter);
 app.use(realtimehot);
 app.use(zhihuhot);
+app.use(gpt);
 //加载静态资源
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("*", (req, res) => {
